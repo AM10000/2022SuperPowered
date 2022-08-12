@@ -41,11 +41,11 @@ class Kronos:
     
     def lfRTime(self, speed, offset, seconds, magnitude=1.9):
         self.tank.cs = ColorSensor(INPUT_4)
-        self.tank.follow_line(magnitude, 0, 1.2, speed, 49.5, offset, 80, 10000, 0, follow_for=follow_for_ms, ms = seconds * 1000)
+        self.tank.follow_line(magnitude, 0, 1.2, SpeedPercent(speed), 49.5, offset, 80, 10000, 0, follow_for=follow_for_ms, ms = seconds * 1000)
 
     def lfLTime(self, speed, offset, seconds, magnitude=1.9):
         self.tank.cs = ColorSensor(INPUT_1)
-        self.tank.follow_line(magnitude, 0, 1.2, speed, 49.5, offset, 80, 100, 0, follow_for=follow_for_ms, ms = seconds * 1000)
+        self.tank.follow_line(magnitude, 0, 1.2, SpeedPercent(speed), 49.5, offset, 80, 100, 0, follow_for=follow_for_ms, ms = seconds * 1000)
     
     def LmediumMotorDegrees(self, speed, degrees, brake=True, block=True):
         self.mmL.on_for_degrees(SpeedPercent(speed), degrees, brake, block)
