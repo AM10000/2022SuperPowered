@@ -1,6 +1,7 @@
 from ev3dev2.sensor.lego import *
 from threading import Thread
 from ev3dev2.motor import *
+from ev3dev2.sensor import *
 
 tank_drive=MoveTank(OUTPUT_A, OUTPUT_D)
 def isInColorRange(floor, ceiling, port):

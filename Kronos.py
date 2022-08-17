@@ -1,11 +1,10 @@
-
 from time import sleep
 from ev3dev2.motor import *
 from ev3dev2.sensor.lego import *
 from ev3dev2.sensor import *
 from ev3dev2.wheel import EV3EducationSetTire
 from commonFunctions import *
-
+from ev3dev2.sound import *
 class Kronos:
     def __init__(self):
         self.robot_width = 116
@@ -113,6 +112,13 @@ class Kronos:
             if self.tank.cs.reflected_light_intensity>RLI:
                 self.tank.stop()
                 break
+    def moveUntilColorRange(self, left_power, right_power, port, floor, ceiling):
+        self.tank.cs=ColorSensor(address=port)
+        self.tank.on(SpeedPercent(left_power), SpeedPercent(right_power))
+        while True:
+            if self.tank.cs.reflected_light_intensity>floor and self.tank.cs.reflected_light_intensity<ceiling:
+                self.tank.stop()
+                break
     def moveUntilColoreq(self, left_power, right_power, port, RLI):
         self.tank.cs=ColorSensor(address=port)
         self.tank.on(SpeedPercent(left_power), SpeedPercent(right_power))
@@ -124,4 +130,35 @@ class Kronos:
         d = (((degrees/10)+degrees)*10.3)/5.6
         self.mdiff.on_for_degrees(left_speed=SpeedPercent(left_power), right_speed=SpeedPercent(right_power), degrees=d, block=True)
         self.mdiff.stop()
-
+    def squareToBlack(self, power):
+        s = Sound()
+        cs1=ColorSensor(address=INPUT_1)
+        cs2 = ColorSensor(address=INPUT_4)
+        self.tank.on(SpeedPercent(power), SpeedPercent(power))
+        while True:
+            if cs1.reflected_light_intensity < 12:
+                self.tank.off()
+                s.beep()
+                self.moveUntilColorlt(0, power, INPUT_4, 12)
+                break
+            elif cs2.reflected_light_intensity < 12:
+                self.tank.off()
+                s.beep()
+                self.moveUntilColorlt(power, 0, INPUT_1, 12)
+                break
+    def squareToRange(self, power, floor, ceiling):
+        s = Sound()
+        cs1=ColorSensor(address=INPUT_1)
+        cs2 = ColorSensor(address=INPUT_4)
+        self.tank.on(SpeedPercent(power), SpeedPercent(power))
+        while True:
+            if cs1.reflected_light_intensity < ceiling and cs1.reflected_light_intensity > floor:
+                self.tank.off()
+                s.beep()
+                self.moveUntilColorRange(0, power, INPUT_4, floor, ceiling)
+                break
+            elif cs2.reflected_light_intensity < ceiling and cs2.reflected_light_intensity > floor:
+                self.tank.off()
+                s.beep()
+                self.moveUntilColorRange(power, 0, INPUT_1, floor, ceiling)
+                break
