@@ -130,21 +130,27 @@ class Kronos:
         d = (((degrees/10)+degrees)*10.3)/5.6
         self.mdiff.on_for_degrees(left_speed=SpeedPercent(left_power), right_speed=SpeedPercent(right_power), degrees=d, block=True)
         self.mdiff.stop()
-    def squareToBlack(self, power):
+    def squareToBlack(self, power, all_three=False):
         s = Sound()
-        cs1=ColorSensor(address=INPUT_1)
-        cs2 = ColorSensor(address=INPUT_4)
+        cs1=ColorSensor(address= INPUT_1)
+        cs2 = ColorSensor(address= INPUT_4)
         self.tank.on(SpeedPercent(power), SpeedPercent(power))
         while True:
             if cs1.reflected_light_intensity < 12:
                 self.tank.off()
                 s.beep()
-                self.moveUntilColorlt(0, power, INPUT_4, 12)
+                self.moveUntilColorlt(0, power, INPUT_2, 12)
+                if all_three == True:
+                    self.moveUntilColorlt(0, power, INPUT_4, 12)
+                    s.beep()
                 break
             elif cs2.reflected_light_intensity < 12:
                 self.tank.off()
                 s.beep()
-                self.moveUntilColorlt(power, 0, INPUT_1, 12)
+                self.moveUntilColorlt(power, 0, INPUT_2, 12)
+                if all_three == True:
+                    self.moveUntilColorlt(power, 0, INPUT_1, 12)
+                    s.beep()
                 break
     def squareToRange(self, power, floor, ceiling):
         s = Sound()
