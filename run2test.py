@@ -6,6 +6,7 @@ from ev3dev2.sensor import *
 k= Kronos()
 
 k.moveDistance(45, 71)
-k.lfCColorRangeL(20, True, 45, 47,)
+k.lfLColorRangeR(20, True, 45, 47,)
 k.LmediumMotorDegrees(35, 40)
-
+k.spinRobot(20,-20,30)
+k.moveDistance(30, 40)
