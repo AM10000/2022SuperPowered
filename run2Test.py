@@ -5,8 +5,9 @@ from ev3dev2.motor import MoveTank
 from ev3dev2.sensor import *
 k= Kronos()
 
-k.moveDistance(45, 71)
+k.moveDistance(45, 78)
 k.moveUntilColorlt(20, 20, 1, 47)
+k.lfLTime(20, True, 0.5)
 k.LmediumMotorDegrees(35, 40)
 #done with power plant
 k.spinRobot(20,-20,30)
