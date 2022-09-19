@@ -1,4 +1,3 @@
-from time import sleep
 from ev3dev2.motor import *
 from ev3dev2.sensor.lego import *
 from ev3dev2.sensor import *
@@ -38,33 +37,35 @@ class Kronos:
         self.tank.cs = ColorSensor(INPUT_4)
         self.tank.follow_line(magnitude, 0, 1.2, SpeedPercent(speed), 49.5, offset, 80, 100, 0, follow_for=isNotInColorRange2, floor = floor, ceiling = ceiling, port1 = INPUT_2, port2 = INPUT_1)
     
+    def lfLColorRangeCR(self, speed, left_side, floor, ceiling, magnitude=1.9):
+        self.tank.cs = ColorSensor(INPUT_1)
+        self.tank.follow_line(magnitude, 0, 1.2, SpeedPercent(speed), 49.5, left_side, 80, 100, 0, follow_for=isNotInColorRange2, floor = floor, ceiling = ceiling, port1 = INPUT_4, port2 = INPUT_2)
+    
     def lfRTime(self, speed, offset, seconds, magnitude=1.9):
         self.tank.cs = ColorSensor(INPUT_4)
         self.tank.follow_line(magnitude, 0, 1.2, SpeedPercent(speed), 49.5, offset, 80, 10000, 0, follow_for=follow_for_ms, ms = seconds * 1000)
 
-    def lfLTime(self, speed, offset, seconds, magnitude=1.9):
+    def lfLTime(self, speed, left_side, seconds, magnitude=1.9):
         self.tank.cs = ColorSensor(INPUT_1)
-        self.tank.follow_line(magnitude, 0, 1.2, SpeedPercent(speed), 49.5, offset, 80, 100, 0, follow_for=follow_for_ms, ms = seconds * 1000)
+        self.tank.follow_line(magnitude, 0, 1.2, SpeedPercent(speed), 49.5, left_side, 80, 100, 0, follow_for=follow_for_ms, ms = seconds * 1000)
     
     def LmediumMotorDegrees(self, speed, degrees, brake=True, block=True):
-        self.mmL.on_for_degrees(SpeedPercent(speed), degrees, brake, block)
+        self.mmL.on_for_degrees(SpeedPercent(speed), degrees, brake, block=False)
+        self._blockMedium(block)
     
     def RmediumMotorDegrees(self, speed, degrees, brake=True, block=True):
-        self.mmR.on_for_degrees(SpeedPercent(speed), degrees, brake, block)
+        self.mmR.on_for_degrees(SpeedPercent(speed), degrees, brake, False)
+        self._blockMedium(block)
 
-    def moveDistance(self, speed, distanceCM, curvePct=0, brake=True, block=True):
-        if curvePct>100:
-            curvePct=100
-        elif curvePct<-100:
-            curvePct = -100
-        if (curvePct<0):
-            r =  (abs(distanceCM) * 10) / ((abs(curvePct)/100) * (math.pi / 2))
-            self.mdiff.on_arc_left(SpeedPercent(speed), r, distanceCM * 10, brake, block)
-        elif (curvePct>0):
-            r =  (abs(distanceCM) * 10) / ((abs(curvePct)/100) * (math.pi / 2))
-            self.mdiff.on_arc_right(SpeedPercent(speed), r, distanceCM * 10, brake, block)
-        else:
-            self.mdiff.on_for_distance(SpeedPercent(speed), distanceCM * 10, brake, block)
+    def moveDistance(self, speedL, speedR, distanceCM, brake=True, block=True):
+        deg = distanceCM*20.45
+        self.mdiff.on_for_degrees(SpeedPercent(speedL),SpeedPercent(speedR), deg, brake, False)        
+        self._blockLarge(block)
+    
+    # def moveDistance(self, speed, distanceCM, radiusCM, brake=True, block=True):
+    #     self.mdiff.on_arc_right(SpeedPercent(speed), radiusCM * 10, distanceCM * 10, brake, False)
+    #     self._blockLarge(block)
+        
 
     # def moveDistance(self, aSpeed, dSpeed, distanceCM, brake=True, block=True):
     #     if aSpeed == dSpeed:
@@ -91,6 +92,7 @@ class Kronos:
             if self.tank.cs.reflected_light_intensity<= RLI:
                 self.tank.stop()
                 break
+
     def moveUntilColorlt(self, left_power, right_power, port, RLI, brake=True):
         self.tank.cs=ColorSensor(address=port)
         self.tank.on(SpeedPercent(left_power), SpeedPercent(right_power))
@@ -98,6 +100,7 @@ class Kronos:
             if self.tank.cs.reflected_light_intensity<RLI:
                 self.tank.stop(brake=brake)
                 break
+
     def moveUntilColorgteq(self, left_power, right_power, port, RLI):
         self.tank.cs=ColorSensor(address=port)
         self.tank.on(SpeedPercent(left_power), SpeedPercent(right_power))
@@ -105,6 +108,7 @@ class Kronos:
             if self.tank.cs.reflected_light_intensity>=RLI:
                 self.tank.stop()
                 break
+
     def moveUntilColorgt(self, left_power, right_power, port, RLI):
         self.tank.cs=ColorSensor(address=port)
         self.tank.on(SpeedPercent(left_power), SpeedPercent(right_power))
@@ -112,6 +116,7 @@ class Kronos:
             if self.tank.cs.reflected_light_intensity>RLI:
                 self.tank.stop()
                 break
+
     def moveUntilColorRange(self, left_power, right_power, port, floor, ceiling):
         self.tank.cs=ColorSensor(address=port)
         self.tank.on(SpeedPercent(left_power), SpeedPercent(right_power))
@@ -119,6 +124,7 @@ class Kronos:
             if self.tank.cs.reflected_light_intensity>floor and self.tank.cs.reflected_light_intensity<ceiling:
                 self.tank.stop()
                 break
+
     def moveUntilColoreq(self, left_power, right_power, port, RLI):
         self.tank.cs=ColorSensor(address=port)
         self.tank.on(SpeedPercent(left_power), SpeedPercent(right_power))
@@ -126,39 +132,62 @@ class Kronos:
             if self.tank.cs.reflected_light_intensity==RLI:
                 self.tank.stop()
                 break
-    def spinRobot(self, left_power, right_power, degrees):
+
+    def spinRobot(self, left_power, right_power, degrees, block=True):
         d = (((degrees/10)+degrees)*10.3)/5.6
-        self.mdiff.on_for_degrees(left_speed=SpeedPercent(left_power), right_speed=SpeedPercent(right_power), degrees=d, block=True)
+        self.mdiff.on_for_degrees(left_speed=SpeedPercent(left_power), right_speed=SpeedPercent(right_power), degrees=d, block=False)
+        self._blockLarge(block)
         self.mdiff.stop()
-    def squareToBlack(self, power):
+
+    def squareToBlack(self, power, sensor1, sensor2):
         s = Sound()
-        cs1=ColorSensor(address=INPUT_1)
-        cs2 = ColorSensor(address=INPUT_4)
+        cs1=ColorSensor(address= sensor1)
+        cs2 = ColorSensor(address= sensor2)
         self.tank.on(SpeedPercent(power), SpeedPercent(power))
         while True:
             if cs1.reflected_light_intensity < 12:
                 self.tank.off()
                 s.beep()
-                self.moveUntilColorlt(0, power, INPUT_4, 12)
+                self.moveUntilColorlt(0, power, sensor2, 12)
                 break
             elif cs2.reflected_light_intensity < 12:
                 self.tank.off()
                 s.beep()
-                self.moveUntilColorlt(power, 0, INPUT_1, 12)
+                self.moveUntilColorlt(power, 0, sensor1, 12)
                 break
-    def squareToRange(self, power, floor, ceiling):
+
+    def squareToRange(self, power, floor, ceiling, sensor1, sensor2):
         s = Sound()
-        cs1=ColorSensor(address=INPUT_1)
-        cs2 = ColorSensor(address=INPUT_4)
+        cs1=ColorSensor(address=sensor1)
+        cs2 = ColorSensor(address=sensor2)
         self.tank.on(SpeedPercent(power), SpeedPercent(power))
         while True:
             if cs1.reflected_light_intensity < ceiling and cs1.reflected_light_intensity > floor:
                 self.tank.off()
                 s.beep()
-                self.moveUntilColorRange(0, power, INPUT_4, floor, ceiling)
+                self.moveUntilColorRange(0, power, sensor2, floor, ceiling)
                 break
             elif cs2.reflected_light_intensity < ceiling and cs2.reflected_light_intensity > floor:
                 self.tank.off()
                 s.beep()
-                self.moveUntilColorRange(power, 0, INPUT_1, floor, ceiling)
+                self.moveUntilColorRange(power, 0, sensor1, floor, ceiling)
                 break
+
+    def error(self, angleFloor, angleCeiling, mdiffVarName):
+        current_degrees = math.degrees(mdiffVarName.theta)
+        if current_degrees < 0:
+            current_degrees += 360
+        if current_degrees < angleCeiling and current_degrees > angleFloor:
+            return True
+        else:
+            return False
+
+    def _blockLarge(self, block):
+        if block:
+            while self.mdiff.left_motor.is_running or self.mdiff.right_motor.is_running:
+                time.sleep(0.005)
+
+    def _blockMedium(self, block):
+        if block:
+            while self.mmL.is_running or self.mmR.is_running:
+                time.sleep(0.005)
