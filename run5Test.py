@@ -8,7 +8,7 @@ from time import sleep
 k=Kronos()
 # k.mdiff.odometry_start()
 k.moveDistance(15, 15, 20)
-k.spinRobot(-15, 15, 32)
+k.spinRobot(-15, 15, 30)
 k.moveDistance(30, 30, 44)
 # k.mdiff.on_to_coordinates(SpeedPercent(30), -220, 600)
 k.moveUntilColorgteq(left_power=10, right_power=10, port=INPUT_4, RLI=80)
