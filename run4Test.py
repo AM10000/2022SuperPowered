@@ -12,6 +12,7 @@ k.moveDistance(30, 30, 15)
 k.moveDistance(30, 30, 12)
 k.RmediumMotorDegrees(speed=40, degrees=70)
 #start of high five shared mission 
+'''
 k.spinRobot(left_power=15,right_power=-15, degrees=70)
 k.moveDistance(40, 40, 25)
 k.spinRobot(15, 0, 60)
@@ -22,3 +23,4 @@ k.moveDistance(speedL=50,speedR=50,distanceCM=35)
 k.spinRobot(left_power=0, right_power=30,degrees=160)
 k.moveDistance(speedL=100,speedR=100,distanceCM=100)
 #speed up 
+'''
