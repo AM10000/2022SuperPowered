@@ -10,4 +10,6 @@ k = Kronos()
 scr = Console()
 
 #positive degrees is down
-k.RmediumMotorDegrees(20, 40)
+k.LmediumMotorDegrees(100, 2000)
+k.moveDistance(-100, -100, 1)
+k.LmediumMotorDegrees(100, 200)
