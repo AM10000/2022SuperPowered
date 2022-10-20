@@ -9,10 +9,10 @@ k.moveUntilColorlt(40, 40, INPUT_4, 12)
 k.moveDistance(15, 15, 2)
 k.spinRobot(left_power=15,right_power=-15, degrees=45)
 k.moveDistance(30, 30, 15)
-k.moveDistance(30, 30, 12)
+# k.moveDistance(30, 30, 12)
+'''
 k.RmediumMotorDegrees(speed=40, degrees=300)
 #start of high five shared mission 
-'''
 k.spinRobot(left_power=15,right_power=-15, degrees=70)
 k.moveDistance(40, 40, 25)
 k.spinRobot(15, 0, 60)
