@@ -27,10 +27,10 @@ def run1():
     #starting to do windmill
     k.moveDistance(40, 40, 11)
     sleep(1)
-    k.moveDistance(-30, -30, 3)
+    k.moveDistance(-30, -30, 5)
     k.spinRobot(-5, 5, 2)
     sleep(0.5)
-    k.moveDistance(30, 30, 6)
+    k.moveDistance(30, 30, 8)
     sleep(0.75)
     k.moveDistance(-30, -30, 4)
     sleep(0.75)
