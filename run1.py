@@ -16,36 +16,37 @@ def run1():
 
     # try:
 
-    k.moveDistance(35, 35, 45)
-    k.moveDistance(15, 15, 8)
-    k.moveDistance(20, 20, -6)
-    k.spinRobot(-15, 15, 40)
-    k.moveUntilColorlt(30, 30, INPUT_2, 16)
-    k.moveUntilColorlt(0, 15, INPUT_4, 16)
-    k.moveDistance(15, 15, 5)
-    k.spinRobot(15, -15, 90)
-    #starting to do windmill
-    k.moveDistance(40, 40, 11)
-    sleep(1)
-    k.moveDistance(-30, -30, 5)
-    k.spinRobot(-5, 5, 2)
-    sleep(0.5)
-    k.moveDistance(30, 30, 8)
-    sleep(0.75)
-    k.moveDistance(-30, -30, 4)
-    sleep(0.75)
-    k.moveDistance(30, 30, 7)
+    # k.moveDistance(35, 35, 45)
+    # k.moveDistance(15, 15, 8)
+    # k.moveDistance(20, 20, -6)
+    # k.spinRobot(-15, 15, 40)
+    # k.moveUntilColorlt(30, 30, INPUT_2, 16)
+    # k.moveUntilColorlt(0, 15, INPUT_4, 16)
+    # k.moveDistance(15, 15, 5)
+    # k.spinRobot(15, -15, 90)
+    # #starting to do windmill
+    # k.moveDistance(40, 40, 11)
+    # sleep(1)
+    # k.moveDistance(-30, -30, 5)
+    # k.spinRobot(-5, 5, 2)
+    # sleep(0.5)
+    # k.moveDistance(30, 30, 8)
+    # sleep(0.75)
+    # k.moveDistance(-30, -30, 4)
+    # sleep(0.75)
+    # k.moveDistance(30, 30, 7)
+
     k.moveDistance(speedL=-50, speedR=-50, distanceCM=12)
 
-    k.LmediumMotorDegrees(100, 2500)
-    k.moveDistance(-100, -100, 23)
+    k.LmediumMotorDegrees(100, 2700)
+    k.moveDistance(-100, -100, 22)
     sleep(2)
  
 
      
     k.spinRobot(0, 30, 200)
     k.moveDistance(-85, -100, 90)
-    k.LmediumMotorDegrees(-100, 2500)
+    k.LmediumMotorDegrees(-100, 2700)
     #car mission: saving for later
     #k.moveDistance(15, 15, 25)
 
