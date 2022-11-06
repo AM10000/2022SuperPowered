@@ -8,6 +8,7 @@ from Kronos import Kronos
 from run1 import run1
 from run2 import run2
 from run3 import run3
+from run4Test import run4
 
 def right():
     try:
@@ -43,7 +44,7 @@ def enter():
         elif run==3:
             run3()
         elif run==4:
-            print('RUNNING RUN4(PLACEHOLDER)')
+            run4()
         #globals()['run' + str(run)]()
     except Exception as e:
         print('Error-'+ str(run))
