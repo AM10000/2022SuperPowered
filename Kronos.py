@@ -173,6 +173,23 @@ class Kronos:
                 self.moveUntilColorRange(power, 0, sensor1, floor, ceiling)
                 break
 
+    def squareToRangeSpin(self, power, floor, ceiling, sensor1, sensor2):
+        s = Sound()
+        cs1=ColorSensor(address=sensor1)
+        cs2 = ColorSensor(address=sensor2)
+        self.tank.on(SpeedPercent(power), SpeedPercent(power))
+        while True:
+            if cs1.reflected_light_intensity < ceiling and cs1.reflected_light_intensity > floor:
+                self.tank.off()
+                s.beep()
+                self.moveUntilColorRange(-power, power, sensor2, floor, ceiling)
+                break
+            elif cs2.reflected_light_intensity < ceiling and cs2.reflected_light_intensity > floor:
+                self.tank.off()
+                s.beep()
+                self.moveUntilColorRange(power, -power, sensor1, floor, ceiling)
+                break
+
     def error(self, angleFloor, angleCeiling, mdiffVarName):
         current_degrees = math.degrees(mdiffVarName.theta)
         if current_degrees < 0:

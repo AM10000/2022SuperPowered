@@ -8,10 +8,9 @@ def run2():
     k.RmediumMotorDegrees(-5, 140, block=False)
     k.moveDistance(45, 45, 78)
     k.lfLTime(10, False, 1.5, 2.3)
-    k.squareToRange(15, 0, 16, INPUT_2, INPUT_4)
+    k.squareToRange(10, 0, 16, INPUT_2, INPUT_4)
     k.LmediumMotorDegrees(-100, 210)
-    k.squareToRange(15, 80, 100, INPUT_2, INPUT_4)
+    k.squareToRange(10, 75, 200, INPUT_2, INPUT_4)
+    # k.squareToRangeSpin(10, 80, 90, INPUT_2, INPUT_4)
     
     k.moveDistance(70, 70, 100, brake=False)
-   # k.moveDistance(20, 20, 25, brake=False)
-   #k.moveDistance(50, 50, 45, brake=False)

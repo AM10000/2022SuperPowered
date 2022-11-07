@@ -1,6 +1,7 @@
 #!/usr/bin/env micropython
 from Kronos import Kronos
 from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_4
+from time import sleep
 
 k = Kronos()
 
@@ -22,9 +23,9 @@ def run4():
     k.spinRobot(40, 0, 30)
     k.RmediumMotorDegrees(speed=-85, degrees=1200)
     k.moveDistance(speedL=30, speedR=30, distanceCM=20)
-    k.LmediumMotorDegrees(speed=8, degrees=210)
-    k.moveDistance(-3, -3, -3, block=False)
+    k.moveDistance(speedL=-30, speedR=-30, distanceCM=5)
+    k.LmediumMotorDegrees(speed=10, degrees=210)
     k.moveDistance(speedL=100,speedR=100,distanceCM=30)
-    k.spinRobot(left_power=0, right_power=30,degrees=60)
+    k.spinRobot(left_power=0, right_power=30,degrees=100)
     k.moveDistance(speedL=100,speedR=90,distanceCM=100)
     #speed up 

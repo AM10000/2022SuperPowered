@@ -6,8 +6,8 @@ def run3():
     k = Kronos()
 
     k.moveDistance(40, 40, 62)
-    k.RmediumMotorDegrees(5, -100, block=False)
-    k.mmL.on_for_seconds(SpeedPercent(-15), 3, block=False)
+    k.RmediumMotorDegrees(5, -100)
+    k.moveDistance(5, 5, -1)
     k.LmediumMotorDegrees(20, 120)
     k.LmediumMotorDegrees(20, -120)
     k.LmediumMotorDegrees(20, 130)

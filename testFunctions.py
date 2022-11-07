@@ -10,4 +10,4 @@ k = Kronos()
 scr = Console()
 
 #positive degrees is down
-k.mmR.on_for_seconds(SpeedPercent(-5), 2, block=False)
+k.LmediumMotorDegrees(8, 210)
