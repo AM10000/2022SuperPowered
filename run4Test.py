@@ -23,9 +23,10 @@ def run4():
     k.spinRobot(40, 0, 30)
     k.RmediumMotorDegrees(speed=-85, degrees=1200)
     k.moveDistance(speedL=30, speedR=30, distanceCM=20)
+    k.spinRobot( left_power=15, right_power=-15, degrees=20)
     k.moveDistance(speedL=-30, speedR=-30, distanceCM=5)
     k.LmediumMotorDegrees(speed=10, degrees=210)
     k.moveDistance(speedL=100,speedR=100,distanceCM=30)
-    k.spinRobot(left_power=0, right_power=30,degrees=100)
+    k.spinRobot(left_power=0, right_power=30,degrees=120)
     k.moveDistance(speedL=100,speedR=90,distanceCM=100)
     #speed up 
