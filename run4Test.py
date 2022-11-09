@@ -6,6 +6,7 @@ from time import sleep
 k = Kronos()
 
 def run4():
+    '''
     k.moveDistance(30, 30, 25)
     k.lfLTime(15, True, 2)
     k.moveUntilColorlteq( 20, 20, port=INPUT_1, RLI=12)
@@ -16,6 +17,7 @@ def run4():
     k.moveDistance(30, 30, 16)
     k.spinRobot(left_power=15,right_power=-15, degrees=63)
     #adjust to the sweet spot for distance for both the units and the water units 
+    
     k.moveDistance(40, 40, 8)
     k.spinRobot(40, 0, 30)
     k.RmediumMotorDegrees(speed=-85, degrees=1200)
@@ -23,6 +25,17 @@ def run4():
     k.spinRobot( left_power=15, right_power=-15, degrees=20)
     k.moveDistance(speedL=-30, speedR=-30, distanceCM=5)
     k.LmediumMotorDegrees(speed=10, degrees=100)
+    '''
+    # k.LmediumMotorDegrees(speed=10, degrees=200)
+    # move arm up x # of degrees
+    # turn clockwise to straighten about 25),
+    # reverse to black, 
+    # square to black, 
+    # reverse x distance, 
+    # move up arm up slitghtly, 
+    # reverse further
+    # disengage from the mission ( reverse)
+
     # k.moveDistance(speedL=100,speedR=100,distanceCM=30)
     # k.spinRobot(left_power=0, right_power=30,degrees=120)
     # k.moveDistance(speedL=100,speedR=90,distanceCM=100)
