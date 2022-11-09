@@ -19,7 +19,8 @@ def run1():
     k.moveDistance(35, 35, 45)
     k.moveDistance(15, 15, 4)
     k.moveDistance(20, 20, -3)
-    k.spinRobot(-15, 15, 40)
+    k.spinRobot(-15, 15, 38)
+    #only changed by 2 deg to ensure the middle sensor catches the black line
     k.moveUntilColorlt(30, 30, INPUT_2, 16)
     k.moveUntilColorlt(0, 15, INPUT_4, 16)
     k.moveDistance(15, 15, 5)
@@ -32,13 +33,13 @@ def run1():
     sleep(0.5)
     k.moveDistance(30, 30, 8)
     sleep(0.75)
-    k.moveDistance(-30, -30, 4)
+    k.moveDistance(-30, -30, 6)
     sleep(0.75)
-    k.moveDistance(30, 30, 7)
+    k.moveDistance(30, 30, 9)
 
     k.moveDistance(speedL=-50, speedR=-50, distanceCM=12)
 
-    k.LmediumMotorDegrees(100, 2800)
+    k.LmediumMotorDegrees(100, 2700)
     #2700
     k.moveDistance(-100, -100, 20)
     sleep(2)
