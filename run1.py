@@ -46,7 +46,7 @@ def run1():
     k.LmediumMotorDegrees(-100, 2700)
 
      
-    k.spinRobot(0, 30, 200)
+    k.spinRobot(0, 30, 150)
     k.moveDistance(-85, -100, 90)
     
     #car mission: saving for later
