@@ -32,19 +32,24 @@ def run4():
     k.spinRobot( left_power=20, right_power=-20, degrees=15)
     # reverse to black
     # square to black
-    k.LmediumMotorDegrees(speed=-100, degrees=40, block=False)
+    k.LmediumMotorDegrees(speed=-100, degrees=30, block=False)
     k.squareToBlack( power=-20, sensor1=INPUT_2, sensor2=INPUT_4)
     # reverse x distance, 
     # move up arm up slightly, 
     k.moveDistance(-40, -40, 12)
-    k.moveDistance(30, 30, 20)
+    
+    k.moveDistance(30, 30, 25)
     k.moveUntilColorlt(-30, 0, INPUT_1, 12)
     k.spinRobot(0, 20, 60)
-    k.RmediumMotorDegrees(-100, 2000, block=False)
+    
+    # k.RmediumMotorDegrees(-100, 1500, block=False)
     k.lfLColorRangeR(15, True, 0, 12)
-    # k.moveUntilColorgt(0, 10, INPUT_4, 80)
     k.spinRobot(0, 20, 50)
-    k.moveDistance(100, 100, distanceCM=30)
+    k.LmediumMotorDegrees(speed=-100, degrees=210)
+    sleep(1)
+    k.moveDistance(100, 100, 16)
+    sleep(1)
+    k.LmediumMotorDegrees(speed=100, degrees=40)
     # reverse further
     # disengage from the mission ( reverse)
 
