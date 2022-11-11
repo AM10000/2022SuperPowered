@@ -39,6 +39,7 @@ def run4():
     k.moveDistance(-40, -40, 12)
     k.moveDistance(30, 30, 20)
     k.moveUntilColorlt(-30, 0, INPUT_1, 12)
+    k.spinRobot(0, 20, 60)
     k.RmediumMotorDegrees(-100, 2000, block=False)
     k.lfLColorRangeR(15, True, 0, 12)
     # k.moveUntilColorgt(0, 10, INPUT_4, 80)
