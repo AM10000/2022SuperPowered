@@ -20,7 +20,7 @@ def run4():
     
     k.moveDistance(40, 40, 8)
     k.spinRobot(40, 0, 30)
-    k.RmediumMotorDegrees(-85, 1200)
+    k.RmediumMotorDegrees(-85, 1500)
     #water barrel drop in circle
     k.moveDistance(speedL=30, speedR=30, distanceCM=20)
     k.spinRobot( left_power=15, right_power=-15, degrees=20)
@@ -37,19 +37,25 @@ def run4():
     # reverse x distance, 
     # move up arm up slightly, 
     k.moveDistance(-40, -40, 12)
-    
-    k.moveDistance(30, 30, 25)
-    k.moveUntilColorlt(-30, 0, INPUT_1, 12)
-    k.spinRobot(0, 20, 60)
+    k.squareToBlack(20, INPUT_1, INPUT_4)
+    k.moveDistance(15, 15, 8)
+    k.moveUntilColorlt(-20, 20, INPUT_1, 12)
     
     # k.RmediumMotorDegrees(-100, 1500, block=False)
     k.lfLColorRangeR(15, True, 0, 12)
-    k.spinRobot(0, 20, 50)
+    k.squareToRange(5, 80, 100, INPUT_2, INPUT_4)
+
+    # k.spinRobot(0, 20, 50)
     k.LmediumMotorDegrees(speed=-100, degrees=210)
-    sleep(1)
-    k.moveDistance(100, 100, 16)
-    sleep(1)
-    k.LmediumMotorDegrees(speed=100, degrees=40)
+    k.moveDistance(40, 40, 16)
+    k.moveUntilColorgt(0, 15, INPUT_2, 80)
+    k.moveUntilColorlt(0, 15, INPUT_2, 16)
+    k.moveDistance(20, 20, 3)
+    k.LmediumMotorDegrees(70, 210)
+    # sleep(1)
+    # k.moveDistance(100, 100, 16)
+    # sleep(1)
+    # k.LmediumMotorDegrees(speed=100, degrees=40)
     # reverse further
     # disengage from the mission ( reverse)
 
