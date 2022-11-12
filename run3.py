@@ -14,7 +14,6 @@ def run3():
     k.LmediumMotorDegrees(20, -130)
     k.LmediumMotorDegrees(20, 130)
     k.LmediumMotorDegrees(20, -130)
-    sleep(1)
     k.RmediumMotorDegrees(20, 145, block=False)
     k.moveDistance(15, 15, -20)
     k.spinRobot(10, -10, 45)
