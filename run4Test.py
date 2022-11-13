@@ -7,7 +7,7 @@ k = Kronos()
 
 def run4():
 
-    k.moveDistance(30, 30, 25)
+    k.moveDistance(25, 25, 25)
     k.lfLTime(15, True, 2)
     k.moveUntilColorlteq( 20, 20, port=INPUT_1, RLI=12)
     # k.moveUntilColorgteq( 30, 20, port=INPUT_1, RLI=80)
@@ -41,25 +41,18 @@ def run4():
     k.moveDistance(15, 15, 8)
     k.moveUntilColorlt(-20, 20, INPUT_1, 12)
     
-    # k.RmediumMotorDegrees(-100, 1500, block=False)
     k.lfLColorRangeR(15, True, 0, 12)
     k.squareToRange(5, 80, 100, INPUT_2, INPUT_4)
 
-    # k.spinRobot(0, 20, 50)
     k.LmediumMotorDegrees(speed=-100, degrees=210)
     k.moveDistance(40, 40, 16)
     k.moveUntilColorgt(0, 15, INPUT_2, 80)
     k.moveUntilColorlt(0, 15, INPUT_2, 16)
     k.moveDistance(20, 20, 3)
     k.LmediumMotorDegrees(70, 210)
-    # sleep(1)
-    # k.moveDistance(100, 100, 16)
-    # sleep(1)
-    # k.LmediumMotorDegrees(speed=100, degrees=40)
-    # reverse further
-    # disengage from the mission ( reverse)
-
-    # k.moveDistance(speedL=100,speedR=100,distanceCM=30)
-    # k.spinRobot(left_power=0, right_power=30,degrees=120)
-    # k.moveDistance(speedL=100,speedR=90,distanceCM=100)
-    #speed up 
+    k.LmediumMotorDegrees(100, 150)
+    k.spinRobot(40, -40, 60)
+    k.squareToBlack(20, INPUT_1, INPUT_4)
+    k.moveDistance(35, 35, 29)
+    k.spinRobot(-35, 35, 110)
+    k.moveDistance(35, 35, 14)

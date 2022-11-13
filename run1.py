@@ -23,10 +23,11 @@ def run1():
     #only changed by 2 deg to ensure the middle sensor catches the black line
     k.moveUntilColorlt(30, 30, INPUT_2, 16)
     k.moveUntilColorlt(0, 15, INPUT_4, 16)
-    k.moveDistance(15, 15, 5)
-    k.spinRobot(15, -15, 85)
-    #starting to do windmill
-    k.moveDistance(40, 40, 9)
+    k.moveDistance(15, 15, 7)
+    k.spinRobot(0, -30, 170)
+    # k.spinRobot(15, -15, 85)
+    # #starting to do windmill
+    k.moveDistance(40, 40, 13)
     sleep(1)
     k.moveDistance(-30, -30, 5)
     k.spinRobot(5, -5, 2)
