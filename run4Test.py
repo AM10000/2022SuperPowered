@@ -2,6 +2,7 @@
 from Kronos import Kronos
 from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_4
 from time import sleep
+from ev3dev2.motor import SpeedPercent
 
 k = Kronos()
 
@@ -33,10 +34,12 @@ def run4():
     # reverse to black
     # square to black
     k.LmediumMotorDegrees(speed=-100, degrees=30, block=False)
+    k.squareToRange(-20, 80, 200, INPUT_2, INPUT_4)
     k.squareToBlack( power=-20, sensor1=INPUT_2, sensor2=INPUT_4)
     # reverse x distance, 
     # move up arm up slightly, 
     k.moveDistance(-40, -40, 12)
+    k.moveDistance(20, 20, 3)
     k.squareToBlack(20, INPUT_1, INPUT_4)
     k.moveDistance(15, 15, 8)
     k.moveUntilColorlt(-20, 20, INPUT_1, 12)
@@ -50,7 +53,8 @@ def run4():
     k.moveUntilColorlt(0, 15, INPUT_2, 16)
     k.moveDistance(20, 20, 3)
     k.LmediumMotorDegrees(70, 210)
-    k.LmediumMotorDegrees(100, 150)
+    # k.LmediumMotorDegrees(100, 150)
+    k.mmL.on_for_seconds(SpeedPercent(100), 0.5)
     k.spinRobot(40, -40, 60)
     k.squareToBlack(20, INPUT_1, INPUT_4)
     k.moveDistance(35, 35, 29)
