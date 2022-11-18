@@ -8,6 +8,7 @@ def run1():
     from ev3dev2.motor import MoveDifferential, OUTPUT_A, OUTPUT_D
     from ev3dev2.wheel import EV3EducationSetTire
 
+    mission = 0
 
     odom = MoveDifferential(OUTPUT_A, OUTPUT_D, EV3EducationSetTire, 116)
     k = Kronos()
@@ -15,40 +16,46 @@ def run1():
     #Watch television mission finished
 
     # try:
-
-    k.moveDistance(40, 40, 45)
-    k.moveDistance(15, 15, 4)
-    k.moveDistance(20, 20, -3)
-    k.spinRobot(-15, 15, 38)
+    if mission == 1 or mission == 0 or mission == '...2' or mission == '...3' or mission == '...1.5':
+        k.moveDistance(40, 40, 40)
+        k.moveDistance(15, 15, 9)
+        k.moveDistance(20, 20, -3)
+        k.spinRobot(-15, 15, 38)
     #only changed by 2 deg to ensure the middle sensor catches the black line
-    k.moveUntilColorlt(30, 30, INPUT_2, 16)
-    k.moveUntilColorlt(0, 15, INPUT_4, 16)
-    k.moveDistance(15, 15, 7)
-    k.spinRobot(0, -30, 170)
-    # k.spinRobot(15, -15, 85)
+    if mission == 1.5 or mission == 0 or mission == '...2' or mission == '...3' or mission == '...1.5':
+        k.moveUntilColorlt(30, 30, INPUT_2, 16)
+        k.moveUntilColorlt(0, 15, INPUT_4, 16)
+        k.moveDistance(15, 15, 7)
+        k.spinRobot(0, -30, 170)
     # #starting to do windmill
-    k.moveDistance(40, 40, 13)
-    sleep(1)
-    k.moveDistance(-30, -30, 5)
-    k.spinRobot(5, -5, 2)
-    sleep(0.5)
-    k.moveDistance(30, 30, 8)
-    sleep(0.75)
-    k.moveDistance(-30, -30, 6)
-    sleep(0.75)
-    k.moveDistance(30, 30, 9)
+    if mission == 2 or mission == 0 or mission == '...3' or mission == '...2':
+        k.moveDistance(40, 40, 13)
+        sleep(1)
+        k.moveDistance(-30, -30, 5)
+        k.spinRobot(5, -5, 2)
+        sleep(0.5)
+        k.moveDistance(30, 30, 8)
+        sleep(0.75)
+        k.moveDistance(-30, -30, 6)
+        sleep(0.75)
+        k.moveDistance(30, 30, 9)
+    if mission == 3 or mission == 0 or mission == '...3':
+        k.moveDistance(-20, -20, 8)
+        
+        k.spinRobot(15, -15, 10)
+        k.moveDistance(-15, -15, 4)
+        # k.spinRobot(-15, 15, 20)
+        # k.moveDistance(speedL=-50, speedR=-50, distanceCM=12)
 
-    k.moveDistance(speedL=-50, speedR=-50, distanceCM=12)
-
-    k.LmediumMotorDegrees(100, 2700)
-    #2700
-    k.moveDistance(-100, -100, 19)
-    sleep(2)
-    k.LmediumMotorDegrees(-100, 2700, block=False)
-
-     
-    k.spinRobot(0, 30, 150)
-    k.moveDistance(-85, -100, 90)
+        # k.LmediumMotorDegrees(100, 2700)
+        # #2700
+        k.LmediumMotorDegrees(100, 2700)
+        k.moveDistance(-100, -100, 19)
+        sleep(2)
+    if mission == 'r' or mission == 0:
+        k.LmediumMotorDegrees(-100, 2700, block=False)
+        k.spinRobot(0, 30, 150)
+        k.moveDistance(-85, -100, 90)
     
 
     
