@@ -22,7 +22,7 @@ def run4():
     k.moveDistance(40, 40, 8)
     k.spinRobot(40, 0, 30)
     
-    k.RmediumMotorDegrees(-85, 1500)
+    k.RmediumMotorDegrees(-85, 1400)
     #water barrel drop in circle
     k.moveDistance(speedL=30, speedR=30, distanceCM=20)
     k.spinRobot( left_power=15, right_power=-15, degrees=20)
@@ -32,11 +32,12 @@ def run4():
     k.LmediumMotorDegrees(speed=10, degrees=150, block=False)
     # move arm up x # of degrees
     # turn clockwise to straighten about 25)
-    k.spinRobot( left_power=20, right_power=-20, degrees=10)
+    k.spinRobot( left_power=20, right_power=-20, degrees=8)
     # reverse to black
     # square to black
-    k.LmediumMotorDegrees(speed=-100, degrees=30, block=False)
-    k.squareToRange(-20, 80, 200, INPUT_2, INPUT_4)
+    k.LmediumMotorDegrees(speed=-100, degrees=20, block=False)
+    k.moveDistance(-15, -15, 3)
+    # k.squareToRange(-20, 80, 200, INPUT_2, INPUT_4)
     k.squareToBlack( power=-20, sensor1=INPUT_2, sensor2=INPUT_4)
     # reverse x distance, 
     # move up arm up slightly, 
@@ -50,12 +51,14 @@ def run4():
     k.lfLColorRangeR(15, True, 0, 12)
     k.squareToRange(5, 80, 100, INPUT_2, INPUT_4)
     k.LmediumMotorDegrees(speed=-100, degrees=210)
+    k.mmL.on_for_seconds(SpeedPercent(-100), 2)
+    
     k.moveDistance(40, 40, 16)
 
     k.moveUntilColorgt(0, 15, INPUT_2, 80)
     k.moveUntilColorlt(0, 15, INPUT_2, 16)
     k.moveDistance(20, 20, 3)
-    k.LmediumMotorDegrees(70, 210)
+    k.LmediumMotorDegrees(85, 210)
     k.mmL.on_for_seconds(SpeedPercent(100), 0.5)
 
     k.spinRobot(40, -40, 60)
