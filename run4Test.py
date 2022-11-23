@@ -20,7 +20,7 @@ def run4():
     #adjust to the sweet spot for distance for both the units and the water units 
 
     k.moveDistance(40, 40, 6)
-    k.spinRobot(40, 0, 30)
+    k.spinRobot(40, 0, 28)
 
     k.moveDistance(-15, -15, 2)
     k.RmediumMotorDegrees(-85, 1400)
@@ -59,7 +59,7 @@ def run4():
     k.moveUntilColorgt(0, 15, INPUT_2, 80)
     k.moveUntilColorlt(0, 15, INPUT_2, 16)
     k.moveDistance(20, 20, 3)
-    k.LmediumMotorDegrees(85, 210)
+    k.LmediumMotorDegrees(85, 240)
     # k.mmL.on_for_seconds(SpeedPercent(100), 0.5)
 
     k.spinRobot(40, -40, 60)
