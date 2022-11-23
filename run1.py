@@ -1,17 +1,22 @@
 #!/usr/bin/env micropython
 
-
 def run1():
     from Kronos import Kronos
     from ev3dev2.sensor import INPUT_1, INPUT_4, INPUT_2
     from time import sleep
     from ev3dev2.motor import MoveDifferential, OUTPUT_A, OUTPUT_D
     from ev3dev2.wheel import EV3EducationSetTire
+    from ev3dev2.button import Button
+    from ev3dev2.sound import Sound
+    from commonFunctions import runParallel
+    from ev3dev2.console import Console
 
     odom = MoveDifferential(OUTPUT_A, OUTPUT_D, EV3EducationSetTire, 116)
     k = Kronos()
+    btn = Button()
+    snd = Sound()
+    scr = Console()
     
-    #Watch television mission finished
 
     # try:
     k.moveDistance(40, 40, 40)
