@@ -7,7 +7,7 @@ from ev3dev2.motor import SpeedPercent
 k = Kronos()
 
 def run4():
-    if 1==2:
+    if 1==1:
         k.moveDistance(25, 25, 25)
         k.lfLTime(15, True, 2)
         k.moveUntilColorlteq( 20, 20, port=INPUT_1, RLI=12)
@@ -60,11 +60,13 @@ def run4():
         k.moveUntilColorlt(0, 15, INPUT_2, 16)
         k.moveDistance(20, 20, 3)
         k.LmediumMotorDegrees(85, 240)
-        # k.mmL.on_for_seconds(SpeedPercent(100), 0.5)
 
         k.spinRobot(40, -40, 75)
 
     k.squareToBlack(20, INPUT_1, INPUT_4)
-    k.moveDistance(35, 35, 29)
-    # k.spinRobot(-35, 35, 110)
-    # k.moveDistance(35, 35, 14)
+    k.moveDistance(35, 35, 22)
+    k.RmediumMotorDegrees(-100, 700)
+    k.moveDistance(35, 35, 7)
+
+    k.spinRobot(-35, 35, 110)
+    k.moveDistance(35, 35, 14)
