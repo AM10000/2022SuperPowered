@@ -14,4 +14,4 @@ k = Kronos()
 # k.moveUntilColorlt(0, 15, INPUT_2, 16)
 # k.moveDistance(20, 20, 3)
 
-k.RmediumMotorDegrees(-50, 300)
+k.moveDistance(110, 100, 1000)

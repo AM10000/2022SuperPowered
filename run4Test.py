@@ -25,6 +25,7 @@ def run4():
 
         k.moveDistance(-15, -15, 2)
         k.RmediumMotorDegrees(-85, 1400)
+        # 1400
         #water barrel drop in circle
         k.moveDistance(speedL=30, speedR=30, distanceCM=22)
         k.spinRobot( left_power=15, right_power=-15, degrees=20)
@@ -58,15 +59,19 @@ def run4():
 
         k.moveUntilColorgt(0, 15, INPUT_2, 80)
         k.moveUntilColorlt(0, 15, INPUT_2, 16)
-        k.moveDistance(20, 20, 3)
+        k.moveDistance(20, 20, 5)
         k.LmediumMotorDegrees(85, 240)
+        k.RmediumMotorDegrees(100, 90)
+        k.moveDistance(-15, -15, 2)
 
-        k.spinRobot(40, -40, 75)
+        k.spinRobot(40, -40, 70)
+        # 75
 
     k.squareToBlack(20, INPUT_1, INPUT_4)
-    k.moveDistance(35, 35, 22)
-    k.RmediumMotorDegrees(-100, 700)
-    k.moveDistance(35, 35, 7)
+
+    k.moveDistance(35, 35, 19)
+    k.RmediumMotorDegrees(-100, 800)
+    k.moveDistance(35, 35, 10)
 
     k.spinRobot(-35, 35, 110)
     k.moveDistance(35, 35, 14)
