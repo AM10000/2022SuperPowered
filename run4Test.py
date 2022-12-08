@@ -73,5 +73,5 @@ def run4():
     k.RmediumMotorDegrees(-100, 800)
     k.moveDistance(35, 35, 10)
 
-    k.spinRobot(-35, 35, 110)
+    k.spinRobot(-35, 35, 130)
     k.moveDistance(35, 35, 14)

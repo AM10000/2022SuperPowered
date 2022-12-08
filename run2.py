@@ -5,8 +5,9 @@ def run2():
     k= Kronos()
 
     
-    k.RmediumMotorDegrees(-5, 140, block=False)
+    
     k.moveDistance(65.5, 65, 78)
+    k.RmediumMotorDegrees(-100, 140, block=False)
     k.lfLTime(10, False, 1.5, 2.3)
     k.squareToRange(10, 0, 16, INPUT_2, INPUT_4)
     k.moveDistance(5, 5, 1)
