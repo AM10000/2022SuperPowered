@@ -43,7 +43,7 @@ def run4():
         k.squareToBlack( power=-20, sensor1=INPUT_1, sensor2=INPUT_4)
         # reverse x distance, 
         # move up arm up slightly, 
-        k.moveDistance(-40, -40, 12)
+        k.moveDistance(-60, -60, 12)
 
         k.moveDistance(20, 20, 3)
         k.squareToBlack(20, INPUT_1, INPUT_4)
