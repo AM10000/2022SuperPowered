@@ -8,7 +8,7 @@ k = Kronos()
 
 def run4():
     if 1==1:
-        k.moveDistance(25, 25, 25)
+        k.moveDistance(35, 35, 25)
         k.lfLTime(15, True, 2)
         k.moveUntilColorlteq( 20, 20, port=INPUT_1, RLI=12)
         k.moveUntilColorlt(50, 50, INPUT_4, 12)
@@ -20,10 +20,10 @@ def run4():
             
         #adjust to the sweet spot for distance for both the units and the water units 
 
-        k.moveDistance(40, 40, 6)
+        k.moveDistance(40, 40, 8)
         k.spinRobot(40, 0, 28)
 
-        k.moveDistance(-15, -15, 2)
+        #k.moveDistance(-15, 15, 1)
         k.RmediumMotorDegrees(-85, 1400)
         # 1400
         #water barrel drop in circle
@@ -69,9 +69,9 @@ def run4():
 
     k.squareToBlack(20, INPUT_1, INPUT_4)
 
-    k.moveDistance(35, 35, 20)
-    k.RmediumMotorDegrees(-100, 800)
-    k.moveDistance(35, 35, 11)
+    k.moveDistance(35, 35, 31)
+    # k.RmediumMotorDegrees(-100, 800)
+   # k.moveDistance(35, 35, 11)
 
-    k.spinRobot(-35, 35, 130)
-    k.moveDistance(35, 35, 14)
+    k.spinRobot(-35, 35, 105)
+    k.moveDistance(35, 35, 17)

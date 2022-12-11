@@ -19,7 +19,8 @@ def run1():
     
 
     # try:
-    k.moveDistance(60, 60, 40)
+    k.moveDistance(50.5, 50, 40)
+    # 60, 60
     k.moveDistance(15, 15, 9)
     k.moveDistance(20, 20, -3)
     k.spinRobot(-15, 15, 38)
@@ -48,9 +49,15 @@ def run1():
     k.moveDistance(-15, -15, 4)
     
     k.LmediumMotorDegrees(100, 2700)
-    k.moveDistance(-100, -99, 19)
+    k.moveDistance(-100, -96, 19)
     sleep(2)
+    k.moveDistance(15, 15, 10)
+    k.moveDistance(-100, -100, 10)
+    # 100, 99
+    sleep(1)
 
     k.LmediumMotorDegrees(-100, 2700, block=False)
-    k.spinRobot(0, 30, 150)
+    k.spinRobot(0, 30, 190)
+    # 150
+    k.moveDistance(20, 20, 1, brake=False)
     k.moveDistance(-85, -100, 90)
